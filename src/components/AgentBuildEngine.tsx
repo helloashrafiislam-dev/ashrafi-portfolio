@@ -983,13 +983,14 @@ export default function AgentBuildEngine() {
         </div>
       )}
 
-      {/* Compact Bottom Controls Dock */}
+      {/* Compact Bottom Controls Dock (hidden per request; keyboard shortcuts T / A / P / Esc remain active) */}
       <div
         role="region"
         aria-label="Portfolio animation controls"
-        className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2"
+        aria-hidden="true"
+        className="hidden fixed bottom-4 left-1/2 z-50 -translate-x-1/2"
       >
-        <div className="flex h-10 items-center gap-1 rounded-lg border border-zinc-800 bg-zinc-950/95 px-1.5 shadow-2xl">
+        <div className="hidden h-10 items-center gap-1 rounded-lg border border-zinc-800 bg-zinc-950/95 px-1.5 shadow-2xl">
           <button
             type="button"
             onClick={togglePause}
