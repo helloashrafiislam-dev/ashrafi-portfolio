@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ashrafi Islam — Web Developer</title>
+    <meta
+      name="description"
+      content="Personal portfolio of Ashrafi Islam, Student and Web Developer based in Dhaka, Bangladesh."
+    />
+    <meta property="og:title" content="Ashrafi Islam — Web Developer" />
+    <meta
+      property="og:description"
+      content="Personal portfolio of Ashrafi Islam, Student and Web Developer based in Dhaka, Bangladesh."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat+Brush&family=Geist+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        try {
+          var params = new URLSearchParams(window.location.search);
+          var urlAgents = params.get('agents');
+          var stored = window.localStorage.getItem('ashrafi_agents_enabled');
+          var reduced =
+            window.matchMedia &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+          var enabled = true;
+          if (urlAgents === 'off') {
+            enabled = false;
+          } else if (urlAgents === 'on') {
+            enabled = true;
+            document.documentElement.classList.add('force-motion');
+          } else if (stored === 'false') {
+            enabled = false;
+          } else if (stored === 'true') {
+            enabled = true;
+          } else if (reduced) {
+            enabled = false;
+          }
+
+          if (enabled) {
+            document.documentElement.classList.add('build-mode');
+          }
+          window.__ASHRAFI_BUILD_INIT__ = {
+            enabled: enabled,
+            forced: urlAgents === 'on',
+            tour: params.get('tour') === '1' || window.sessionStorage.getItem('ashrafi_tour_pending') === '1'
+          };
+        } catch (e) {
+          document.documentElement.classList.add('build-mode');
+          window.__ASHRAFI_BUILD_INIT__ = { enabled: true, forced: false, tour: false };
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-[#09090b] text-zinc-100 antialiased selection:bg-[#ff3b2f] selection:text-white overflow-x-hidden">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
